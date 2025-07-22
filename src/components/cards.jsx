@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react';
 import { getForecast } from '../service/weatherApi.js';
+import sunriseIcon from '../assets/sunrise.png';
+import sunsetIcon from '../assets/sunset.png';
+import humidIcon from '../assets/humid.png';
+import windIcon from '../assets/wind.png';
+import pressureIcon from '../assets/pressure.png';
 
 // all weather cards components  forecasts and details 
 export default function WeatherCards({ data, city, unit }) {
@@ -138,7 +143,7 @@ export default function WeatherCards({ data, city, unit }) {
         {/* humidity */}
         <div className="weather-card">
           <div className="card-header">
-            <span className="card-icon">◉</span>
+            <img src={humidIcon} alt="Humidity" className="card-icon-img" />
             <span className="card-title">HUMIDITY</span>
           </div>
           <div className="card-main">
@@ -149,7 +154,7 @@ export default function WeatherCards({ data, city, unit }) {
         {/* wind */}
         <div className="weather-card">
           <div className="card-header">
-            <span className="card-icon">↻</span>
+            <img src={windIcon} alt="Wind" className="card-icon-img" />
             <span className="card-title">WIND</span>
           </div>
           <div className="card-main">
@@ -159,22 +164,30 @@ export default function WeatherCards({ data, city, unit }) {
           <div className="card-subtitle">{getWindDirection(data.wind.deg)}</div>
         </div>
 
-        {/* sunrise */}
+        {/* sunrise & sunset */}
         <div className="weather-card">
-          <div className="card-header">
-            <span className="card-icon">◯</span>
-            <span className="card-title">SUNRISE</span>
+          <div className="sun-times-container">
+            <div className="sun-time-item">
+              <img src={sunriseIcon} alt="Sunrise" className="sun-icon" />
+              <div className="sun-time-content">
+                <div className="sun-time-label">Sunrise</div>
+                <div className="sun-time-value">{formatTime(data.sys.sunrise)}</div>
+              </div>
+            </div>
+            <div className="sun-time-item">
+              <img src={sunsetIcon} alt="Sunset" className="sun-icon" />
+              <div className="sun-time-content">
+                <div className="sun-time-label">Sunset</div>
+                <div className="sun-time-value">{formatTime(data.sys.sunset)}</div>
+              </div>
+            </div>
           </div>
-          <div className="card-main">
-            <div className="card-value">{formatTime(data.sys.sunrise)}</div>
-          </div>
-          <div className="card-subtitle">Sunset: {formatTime(data.sys.sunset)}</div>
         </div>
 
         {/* ppressure */}
         <div className="weather-card">
           <div className="card-header">
-            <span className="card-icon">⏲</span>
+            <img src={pressureIcon} alt="Pressure" className="card-icon-img" />
             <span className="card-title">PRESSURE</span>
           </div>
           <div className="card-main">
