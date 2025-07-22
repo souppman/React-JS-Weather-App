@@ -1,4 +1,4 @@
-// simple loading component
+// loading req use for error 
 export default function Loading() {
   return (
     <div>

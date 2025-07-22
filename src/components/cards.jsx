@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getForecast } from '../service/weatherApi.js';
 
-// weather cards component - includes forecast and detail cards
+// all weather cards components  forecasts and details 
 export default function WeatherCards({ data, city, unit }) {
   const [forecastData, setForecastData] = useState(null);
   const [forecastLoading, setForecastLoading] = useState(false);
@@ -95,16 +95,16 @@ export default function WeatherCards({ data, city, unit }) {
 
   return (
     <div className="weather-container">
-      {/* Header Section - City and Main Weather */}
+      {/* this is header section - city curr weathers */}
       <div className="weather-header">
         <h1 className="city-name">{data.name}</h1>
         <div className="temperature">{Math.round(data.main.temp)}°</div>
         <div className="description">{data.weather[0].description}</div>
-        <div className="card-subtitle">Feels like {Math.round(data.main.feels_like)}°</div>
+        <div className="feels-like">Feels like {Math.round(data.main.feels_like)}°</div>
         <div className="daily-temps">H:{Math.round(data.main.temp_max)}° L:{Math.round(data.main.temp_min)}°</div>
       </div>
 
-      {/* 5-Day Forecast */}
+      {/* 5-day forecast */}
       <div className="forecast-container">
         <div className="forecast-header">
           <h3>5-Day Forecast</h3>
@@ -133,9 +133,9 @@ export default function WeatherCards({ data, city, unit }) {
         ) : null}
       </div>
 
-      {/* Weather Detail Cards Grid */}
+      {/* weather details card grid */}
       <div className="weather-cards-grid">
-        {/* Humidity Card */}
+        {/* humidity */}
         <div className="weather-card">
           <div className="card-header">
             <span className="card-icon">◉</span>
@@ -146,7 +146,7 @@ export default function WeatherCards({ data, city, unit }) {
           </div>
         </div>
 
-        {/* Wind Card */}
+        {/* wind */}
         <div className="weather-card">
           <div className="card-header">
             <span className="card-icon">↻</span>
@@ -159,7 +159,7 @@ export default function WeatherCards({ data, city, unit }) {
           <div className="card-subtitle">{getWindDirection(data.wind.deg)}</div>
         </div>
 
-        {/* Sunrise Card */}
+        {/* sunrise */}
         <div className="weather-card">
           <div className="card-header">
             <span className="card-icon">◯</span>
@@ -171,7 +171,7 @@ export default function WeatherCards({ data, city, unit }) {
           <div className="card-subtitle">Sunset: {formatTime(data.sys.sunset)}</div>
         </div>
 
-        {/* Pressure Card */}
+        {/* ppressure */}
         <div className="weather-card">
           <div className="card-header">
             <span className="card-icon">⏲</span>

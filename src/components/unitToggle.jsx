@@ -1,4 +1,4 @@
-// temperature unit toggle component
+//temp toggle
 export default function UnitToggle({ unit, onUnitChange }) {
   return (
     <div className="unit-toggle">
